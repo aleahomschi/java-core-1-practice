@@ -1,0 +1,1 @@
+This is the project with solution of JavaCore 1 tasks
