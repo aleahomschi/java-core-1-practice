@@ -1,3 +1,5 @@
+package Task3;
+
 public class MakingChanges {
     public static void changeIdentities(Person p1, Person p2){
         System.out.println("Before:");

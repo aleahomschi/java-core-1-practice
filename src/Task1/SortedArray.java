@@ -1,7 +1,9 @@
+package Task1;
+
 import java.util.Scanner;
 
 public class SortedArray {
-    static void arrayAscending(){
+    public static void arrayAscending(){
         System.out.println("Enter your array:");
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();

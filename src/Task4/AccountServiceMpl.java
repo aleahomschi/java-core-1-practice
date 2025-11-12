@@ -1,4 +1,6 @@
-public class AccountServiceMpl implements AccountService{
+package Task4;
+
+public class AccountServiceMpl implements AccountService {
     Account[] accounts;
 
     public AccountServiceMpl(Account[] accounts) {

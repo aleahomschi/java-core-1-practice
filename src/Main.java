@@ -1,3 +1,12 @@
+import Task1.SortedArray;
+import Task2.ReverseString;
+import Task3.MakingChanges;
+import Task3.Person;
+import Task4.Account;
+import Task4.AccountService;
+import Task4.AccountServiceMpl;
+import Task4.User;
+
 import java.util.Scanner;
 public class Main {
 
@@ -10,8 +19,10 @@ public class Main {
             System.out.println("1 - is array ascending, 2 - reverse string, 3 - switch identities of persons, 4 - user machinations");
             n = in.nextInt();
             switch (n){
-                case 1: {SortedArray.arrayAscending(); break;}
-                case 2: {ReverseString.reverseString(); break;}
+                case 1: {
+                    SortedArray.arrayAscending(); break;}
+                case 2: {
+                    ReverseString.reverseString(); break;}
                 case 3: {
                     System.out.println("Enter person's name:");
                     String PersonName = in.next();
