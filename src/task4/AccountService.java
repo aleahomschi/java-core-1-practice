@@ -1,8 +1,9 @@
-package Task4;
+package task4;
 
 public interface AccountService {
     Account findAccountByOwnerId(long id);
-    long countAccountsWithBalanceGreaterThen(long value);
+
+    long countAccountsWithBalanceGreaterThan(long value);
 
     void show();
 }
