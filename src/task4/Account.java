@@ -6,22 +6,28 @@ public class Account {
     private long balance;
     private User owner;
 
-    private void validateNumber(long number) {
-        if (number <= 0) {
+    private void validateID(long number) {
+        if (number <=0 ) {
             throw new IllegalArgumentException("Number should be greater than 0");
         }
     }
 
-    private void validateObject(Object o) {
+    private void validateBalance(long number) {
+        if (number < 0) {
+            throw new IllegalArgumentException("Balance cannot be negative");
+        }
+    }
+
+    private void validateUser(Object o) {
         if (o == null) {
             throw new IllegalArgumentException("Object can't be null");
         }
     }
 
     public Account(long id, long balance, User owner) {
-        validateNumber(id);
-        validateNumber(balance);
-        validateObject(owner);
+        validateID(id);
+        validateBalance(balance);
+        validateUser(owner);
 
         this.id = id;
         this.balance = balance;
@@ -41,17 +47,17 @@ public class Account {
     }
 
     public void setId(long id) {
-        validateNumber(id);
+        validateID(id);
         this.id = id;
     }
 
     public void setBalance(long balance) {
-        validateNumber(balance);
+        validateBalance(balance);
         this.balance = balance;
     }
 
     public void setOwner(User owner) {
-        validateObject(owner);
+        validateUser(owner);
         this.owner = owner;
     }
 

@@ -1,6 +1,7 @@
 package loggerFormat;
 
 import java.util.logging.Formatter;
+import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
 public class ColorFormatter extends Formatter {
@@ -12,8 +13,9 @@ public class ColorFormatter extends Formatter {
 
     @Override
     public String format(LogRecord record) {
-        String color = switch (record.getLevel().getName()) {
-            case "SEVERE" -> RED;
+        Level level = record.getLevel();
+        String color = switch (level.getName()) {
+            case "ERROR" -> RED;
             case "WARNING" -> YELLOW;
             case "INFO" -> GREEN;
             default -> RESET;

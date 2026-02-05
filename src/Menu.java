@@ -1,16 +1,14 @@
 import task1.SortingUtility;
 import task2.ReversingUtility;
-import task3.PersonUtils;
-import task3.Person;
-import task4.Account;
-import task4.AccountService;
-import task4.AccountServiceMpl;
-import task4.User;
+import task4.*;
 
 import java.util.Scanner;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static task3.PersonUtils.handleTask3;
+import static task4.Utils.handleTask4;
 
 public class Menu {
     private static final Scanner in = new Scanner(System.in);
@@ -95,7 +93,12 @@ public class Menu {
                     default -> log.warning("Unknown option selected: " + choice);
                 }
 
+            } catch (java.util.InputMismatchException e) {
+                log.severe("User Input Error: Expected a numeric value but received invalid characters.");
+                choice = -1;
+                in.nextLine();
             } catch (Exception e) {
+                log.severe("Unexpected system error occurred during operation " + choice + " " + e.getMessage());
                 choice = -1;
             }
 
@@ -104,65 +107,4 @@ public class Menu {
         log.info("Good Bye.");
     }
 
-    private static void handleTask3() {
-        log.info("Executing Task 3: Identity Swap.");
-
-        log.info("--- Setup Person 1 ---");
-        log.info("Enter person 1's name:");
-        String person1Name = in.nextLine();
-
-        log.info("Enter person 1's age (integer):");
-        int person1Age = in.nextInt();
-        in.nextLine();
-        Person p1 = new Person(person1Name, person1Age);
-
-        log.info("--- Setup Person 2 ---");
-        log.info("Enter person 2's name:");
-        String person2Name = in.nextLine();
-
-        log.info("Enter person 2's age (integer):");
-        int person2Age = in.nextInt();
-        in.nextLine();
-        Person p2 = new Person(person2Name, person2Age);
-
-        log.info("Changing identities...");
-        PersonUtils.changeIdentities(p1, p2);
-
-        log.info("Identities successfully changed.");
-
-
-    }
-
-    private static void handleTask4() {
-        log.info("Executing Task 4: Account operations.");
-
-        User user1 = new User(123, "Mark", "Petrov");
-        User user2 = new User(321, "Alex", "Petrov");
-
-        Account[] accounts = {
-                new Account(123, 10000, user1),
-                new Account(199, 1000000, user2),
-                new Account(456, 500, user1),
-                new Account(789, 50000, user2)
-        };
-
-        AccountService service = new AccountServiceMpl(accounts);
-
-        log.info("--- All Accounts ---");
-        service.show();
-
-        log.info("Enter balance threshold (integer):");
-        int balance = in.nextInt();
-        in.nextLine();
-
-        long count = service.countAccountsWithBalanceGreaterThan(balance);
-        log.info("Result: " + count + " accounts found.");
-
-        log.info("Enter owner ID (integer):");
-        int id = in.nextInt();
-        in.nextLine();
-
-        Account found = service.findAccountByOwnerId(id);
-        log.info("Search Result: " + (found != null ? found : "Not found."));
-    }
 }

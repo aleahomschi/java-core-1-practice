@@ -10,14 +10,14 @@ public class Person {
             throw new IllegalArgumentException("Name can't be null or empty");
         }
 
-        if (!name.trim().matches("^[a-zA-Z]+$")) {
+        if (!name.trim().matches("^[a-zA-Z-' ]+$")) {
             throw new IllegalArgumentException("Name should contain only letters");
         }
     }
 
     private void validateAge(int age) {
-        if (age <= 0) {
-            throw new IllegalArgumentException("Age should be greater than 0");
+        if (age <= 0 || age >= 100) {
+            throw new IllegalArgumentException("Age should be greater than 0 and less than 100");
         }
     }
 

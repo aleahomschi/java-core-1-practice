@@ -81,7 +81,7 @@ public class ReversingUtility {
         }
 
         String result = new String(charArray);
-        log.info(str + "<- Reverse -> " + result);
+        log.info(str + " <- Reverse -> " + result);
     }
 }
 

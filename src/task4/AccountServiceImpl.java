@@ -2,9 +2,9 @@ package task4;
 
 import java.util.logging.Logger;
 
-public class AccountServiceMpl implements AccountService {
+public class AccountServiceImpl implements AccountService {
     private final Account[] accounts;
-    private static final Logger log = Logger.getLogger(AccountServiceMpl.class.getName());
+    private static final Logger log = Logger.getLogger(AccountServiceImpl.class.getName());
 
     private void validateNumber(long number) {
         if (number <= 0) {
@@ -18,7 +18,7 @@ public class AccountServiceMpl implements AccountService {
         }
     }
 
-    public AccountServiceMpl(Account[] accounts) {
+    public AccountServiceImpl(Account[] accounts) {
         validateAccountArray(accounts);
         this.accounts = accounts;
     }
@@ -54,10 +54,8 @@ public class AccountServiceMpl implements AccountService {
 
         int num = 0;
         for (Account a : accounts) {
-            if (a != null) {
-                if (a.getBalance() > value) {
+            if (a != null && a.getBalance() >value) {
                     num++;
-                }
             }
         }
         log.info("Count of accounts with balance greater than " + value + ": " + num);

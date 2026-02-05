@@ -6,12 +6,12 @@ public class User {
     private String firstName;
     private String lastName;
 
-    private void validateString(String value) {
+    private void validateName(String value) {
         if (value == null || value.trim().isEmpty()) {
             throw new IllegalArgumentException("String value can't be null or empty.");
         }
 
-        if (!value.trim().matches("^[a-zA-Z]+$")) {
+        if (!value.trim().matches("^[a-zA-Z-' ]+$")) {
             throw new IllegalArgumentException("String value can only contain letters.");
         }
     }
@@ -24,8 +24,8 @@ public class User {
 
     public User(long id, String firstName, String lastName) {
         validateNumber(id);
-        validateString(firstName);
-        validateString(lastName);
+        validateName(firstName);
+        validateName(lastName);
 
         this.id = id;
         this.firstName = firstName.trim();
@@ -50,12 +50,12 @@ public class User {
     }
 
     public void setFirstName(String firstName) {
-        validateString(firstName);
+        validateName(firstName);
         this.firstName = firstName.trim();
     }
 
     public void setLastName(String lastName) {
-        validateString(lastName);
+        validateName(lastName);
         this.lastName = lastName.trim();
     }
 

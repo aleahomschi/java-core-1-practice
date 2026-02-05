@@ -15,8 +15,9 @@ public class SortingUtility {
         try {
             n = in.nextInt();
         } catch (InputMismatchException e) {
+            in.nextLine();
             log.severe("Invalid input for array size: must be an integer.");
-            throw new InputMismatchException();
+            throw e;
         }
 
         if (n < 1) {
@@ -24,7 +25,7 @@ public class SortingUtility {
         }
 
         if (n == 1) {
-            log.warning("Array of size 1 is always sorted.");
+            log.info("Array of size 1 is always sorted.");
         }
 
         int[] arr = new int[n];
@@ -35,8 +36,9 @@ public class SortingUtility {
                 arr[i] = in.nextInt();
             }
         } catch (InputMismatchException e) {
+            in.nextLine();
             log.severe("Array's element should be a number");
-            throw new InputMismatchException();
+            throw e;
         }
 
         for (int i = 1; i < arr.length; i++) {
@@ -46,7 +48,6 @@ public class SortingUtility {
             }
         }
 
-        log.info("Array is sorted.");
         return true;
     }
 }
